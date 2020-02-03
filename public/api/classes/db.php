@@ -6,6 +6,14 @@ use PDO;
 
 class Database
 {
+    // private $dotenv = classes\Dotenv::createImmutable(__DIR__);
+    // private $dotenv->load();
+    // private $host    = $_ENV['DB_HOST'];
+    // private $port    = $_ENV['DB_PORT'];
+    // private $db    = $_ENV['DB_DATABASE'];
+    // private $user    = $_ENV['DB_USER'];
+    // private $pass    = $_ENV['DB_PASS'];
+
     private $host    = 'xav-p-mariadb01.xavizus.com';
     private $port    = 16200;
     private $db      = 'philip-bank';
