@@ -13,14 +13,15 @@ class User
 
     public function get($data)
     {
-        $this->db->query("SELECT * FROM `philip-bank`.users");
+        $q = "SELECT * FROM `philip-bank`.users";
+        $this->db->query($q);
 
         // Bind values
         // $this->db->bind(':username', $data['username']);
         // $this->db->bind(':email', $data['email']);
         // $this->db->bind(':password', $data['password']);
         // Execute
-        if ($this->db->execute()) {
+        if ($this->db->execute($q)) {
             echo("it worked");
             return true;
         } else {
@@ -32,3 +33,4 @@ class User
 }
 $test = new User();
 var_dump($test);
+// echo (get($data));

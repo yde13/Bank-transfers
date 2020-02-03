@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 // include_once './classes/db.php';
 // $connection = new Database();
 $db = mysqli_connect('xav-p-mariadb01.xavizus.com', 'philip', 'cbQUJ7cwRzTK1239', 'philip', 16200);
@@ -24,10 +23,7 @@ if (isset($_GET['delete'])) {
     mysqli_query($db, "DELETE FROM philip.bank WHERE idbank=$id");
     header('Location: index.php');
 }
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

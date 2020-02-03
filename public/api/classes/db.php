@@ -1,5 +1,8 @@
 <?php
 
+namespace classes;
+
+use PDO;
 
 class Database
 {
@@ -29,7 +32,6 @@ class Database
     public function query($sql)
     {
         $this->stmt = $this->pdo->prepare($sql);
-        //funkar tydligen inte
     }
     public function execute()
     {
