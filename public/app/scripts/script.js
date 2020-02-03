@@ -1,0 +1,1 @@
+// ajax anrop till clientsidan indexedDB.php i app foldern

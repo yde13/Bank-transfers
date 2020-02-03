@@ -26,6 +26,15 @@ class Database
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
     }
+    public function query($sql)
+    {
+        $this->stmt = $this->pdo->prepare($sql);
+        //funkar tydligen inte
+    }
+    public function execute()
+    {
+        return $this->stmt->execute();
+    }
 }
 $test = new Database();
 var_dump($test);
