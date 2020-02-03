@@ -1,10 +1,12 @@
 <?php 
+
+// include_once './classes/db.php';
+// $connection = new Database();
 $db = mysqli_connect('xav-p-mariadb01.xavizus.com', 'philip', 'cbQUJ7cwRzTK1239', 'philip', 16200);
 
-
-$all1 = mysqli_query($db, "SELECT * FROM philip.bank");
-$all2 = mysqli_query($db, "SELECT * FROM philip.bank");
-$all3 = mysqli_query($db, "SELECT * FROM philip.bank");
+$all1 = mysqli_query($db, "SELECT * FROM `philip-bank`.users");
+$all2 = mysqli_query($db, "SELECT * FROM `philip-bank`.users");
+$all3 = mysqli_query($db, "SELECT * FROM `philip-bank`.users");
 
 
 if (isset($_POST['submit'])) {
@@ -49,7 +51,7 @@ if (isset($_GET['delete'])) {
     <select>
 
         <?php while ($row = mysqli_fetch_array($all1)) { ?>
-                    <option><?php echo $row['name']; ?></option>
+                    <option><?php echo $row['firstName']; ?></option>
         <?php } ?>
            
     </select>
@@ -59,7 +61,7 @@ if (isset($_GET['delete'])) {
         to:
         <select>
             <?php while ($row = mysqli_fetch_array($all2)) { ?>
-                    <option><?php echo $row['name']; ?></option>
+                    <option><?php echo $row['firstName']; ?></option>
             <?php } ?>
            
         </select>
@@ -71,19 +73,19 @@ if (isset($_GET['delete'])) {
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Balance</th>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>phone number</th>
+
             </tr>
         </thead>
         <tbody>
             <?php while ($row = mysqli_fetch_array($all3)) { ?>
                 <tr>
-                    <td><?php echo $row['idbank']; ?></td>
-                    <td><?php echo $row['name']; ?></td>
-                    <td><?php echo $row['balance']; ?>kr</td>
-                    <td>
-                        <a href="index.php?delete=<?php echo $row['idbank']; ?>">Delete</a>
-                    </td>
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['firstName']; ?></td>
+                    <td><?php echo $row['lastName']; ?></td>
+                    <td><?php echo $row['mobilephone']; ?></td>
             <?php } ?>
         </tbody>
     </table>
