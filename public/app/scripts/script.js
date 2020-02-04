@@ -5,7 +5,8 @@ $("button").on("click", function (event) {
         url: 'http://localhost:8888/banking/bank-transfers/public/api/index.php',
         success: function (d) {
             
-            //transfer mooney to selected accounts
+            //transfer mooney to selected accounts using views in database
+
             
         }
     });
@@ -19,7 +20,7 @@ $.ajax({
         for (var i = 0; i < d.data.length; i++) {
             var obj = d.data[i];
 
-            $("select").append(`<option>${obj.id}  ${obj.firstName}  ${obj.lastName} ${obj.mobilephone}</option>`);
+            $("select").append(`<option>  ${obj.firstName}  ${obj.lastName} ${obj.balance}kr</option>`);
 
         }
     }

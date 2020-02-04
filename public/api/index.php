@@ -27,7 +27,9 @@ if ($num > 0) {
             'firstName' => $firstName,
             'lastName' => $lastName,
             'username' => $username,
-            'mobilephone' => $mobilephone
+            'mobilephone' => $mobilephone,
+            'account_id' => $account_id,
+            'balance' => $balance
         );
         array_push($user_arr['data'], $user_item);
     }

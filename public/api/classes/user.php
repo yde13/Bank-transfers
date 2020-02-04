@@ -11,6 +11,8 @@ class User
     public $lastName;
     public $username;
     public $mobilephone;
+    public $account_id;
+    public $balance;
 
     public function __construct($db)
     {
@@ -19,7 +21,8 @@ class User
 
     public function get()
     {
-        $query = "SELECT id, firstName, lastName, username, mobilephone FROM `philip-bank`.users";
+        $query = "SELECT id, firstName, lastName, username, mobilephone, account_id, balance
+                  FROM `philip-bank`.`vw_users`";
 
         $stmt = $this->pdo->prepare($query);
 
