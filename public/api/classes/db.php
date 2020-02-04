@@ -26,25 +26,28 @@ class Database
         PDO::ATTR_EMULATE_PREPARES   => false,
     ];
     public $pdo;
-    public function __construct()
+    
+    public function connect()
     {
-        $dsn = "mysql:host=$this->host;port=$this->port;dbname=$this->db;charset=$this->charset";
+
+//        $this->pdo = null;
+
+        // $dsn = "mysql:host=$this->host;port=$this->port;dbname=$this->db;charset=$this->charset";
         try {
-            $this->pdo = new PDO($dsn, $this->user, $this->pass, $this->options);
-            echo ("connected");
+            $this->pdo = new PDO("mysql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db . ";charset=" . $this->charset, $this->user, $this->pass, $this->options);
+//            echo ("connected");
         } catch (\PDOException $e) {
-            echo ("not connected");
+//            echo ("not connected");
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
     }
-    public function query($sql)
-    {
-        $this->stmt = $this->pdo->prepare($sql);
-    }
-    public function execute()
-    {
-        return $this->stmt->execute();
-    }
+    // public function query($sql)
+    // {
+    //     $this->stmt = $this->pdo->prepare($sql);
+    // }
+    // public function execute()
+    // {
+    //     return $this->stmt->execute();
+    // }
+
 }
-$test = new Database();
-var_dump($test);

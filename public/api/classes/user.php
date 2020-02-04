@@ -4,33 +4,27 @@ namespace Classes;
 
 class User
 {
-    private $db;
+    private $pdo;
 
-    public function __constructor($database)
+    public $id;
+    public $firstName;
+    public $lastName;
+    public $username;
+    public $mobilephone;
+
+    public function __construct($db)
     {
-        $this->db = $database;
+        $this->pdo = $db;
     }
 
-    public function get($data)
+    public function get()
     {
-        $q = "SELECT * FROM `philip-bank`.users";
-        $this->db->query($q);
+        $query = "SELECT id, firstName, lastName, username, mobilephone FROM `philip-bank`.users";
 
-        // Bind values
-        // $this->db->bind(':username', $data['username']);
-        // $this->db->bind(':email', $data['email']);
-        // $this->db->bind(':password', $data['password']);
-        // Execute
-        if ($this->db->execute($q)) {
-            echo("it worked");
-            return true;
-        } else {
-            echo("it didnt worked");
+        $stmt = $this->pdo->prepare($query);
 
-            return false;
-        }
+        $stmt->execute();
+
+        return $stmt;
     }
 }
-$test = new User();
-var_dump($test);
-// echo (get($data));

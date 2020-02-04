@@ -6,14 +6,14 @@ $("tbody").on( "click", "button.btn-danger", function( event ) {
 
 $( "button.btn-primary" ).on( "click", function( event ) {
   $.ajax({
-    url: 'https://randomuser.me/api/',
-    success: function(data) {
-        let id = data.results[0].id.value;
-    	let firstName = data.results[0].name.first;
-    	let lastName = data.results[0].name.last;
-        let email = data.results[0].email;
+    url: 'http://localhost:8888/banking/bank-transfers/public/api/index.php',
+    success: function(d) {
+        let id = d.data[0].id;
+        let firstName = d.data[0].firstName;
+        let lastName = d.data[0].lastName;
+        let mobilephone = d.data[0].mobilephone;
 
-			$("tbody").append(`<tr><td>${id}</td><td>${firstName}</td><td>${lastName}</td><td>${email}</td><td><button type="button" class="btn btn-danger">Remove</button></td></tr>`);
+			$("tbody").append(`<tr><td>${id}</td><td>${firstName}</td><td>${lastName}</td><td>${mobilephone}</td><td><button type="button" class="btn btn-danger">Remove</button></td></tr>`);
     }
   });
 });
