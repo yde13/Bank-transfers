@@ -60,17 +60,20 @@ $(document).ready(function () {
 
                 $("select").append(`<option class="option" value="${obj.account_id}">  ${obj.firstName}  ${obj.lastName} ${obj.balance}kr</option>`);
 
-
+                $("tbody").append(`<tr><th>${obj.account_id}</th><td> ${obj.firstName}</td><td> ${obj.lastName}</td><td> ${obj.balance}</td><tr>`)
             }
         }
     });
 
-    // $("select").change("click", function (e) {
-    // var id = this.value[0];
-    // console.log(id);
-    // let toUserList = $("#toUserList");
-    //        let toUserId = toUserList.options[toUserList.selectedIndex].value;
-    //        console.log(toUserId);
+    $.ajax({
+        url: 'http://localhost/banking/bank-transfers/public/api/getall.php',
+        success: function (e) {
 
-    // });
+            for (var x = 0; x < e.test.length; x++) {
+                var obj = e.test[x];
+
+                $("tbody").append(`<tr><th>${obj.from_amount}${obj.from_currency}</th><td> ${obj.from_account}</td><td> ${obj.to_account}</td><td> ${obj.date}</td><tr>`)
+            }
+        }
+    });
 });

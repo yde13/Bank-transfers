@@ -12,20 +12,24 @@
     
 </head>
 <body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
+  </div>
+</nav>
+
     
-    <!-- det är här allting ska synas och köras! -->
-    <!-- här vi ska skriva ut från databasen med hjälp av api från script.js -->
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Email</th>
-      <th scope="col">Remove</th>
-    </tr>
-  </thead>
-</table>
         <form id="form" method="POST">
             from:<select id="fromUserList">
             </select>
@@ -37,6 +41,47 @@
             <br>
             <button type="button" class="btn btn-primary" name="submit" id="submit">Transfer</button>
         </form>
+        <h1>Users</h1>
+        <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <th></th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+<h1>History</h1>
+<table class="table table-striped table-dark">
+
+<thead>
+    <tr>
+      <th scope="col">Transfered money</th>
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <th></th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
     
     <script src="./scripts/script.js" ></script>
     
