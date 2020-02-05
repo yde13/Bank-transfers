@@ -15,7 +15,7 @@
     
     <!-- det är här allting ska synas och köras! -->
     <!-- här vi ska skriva ut från databasen med hjälp av api från script.js -->
-    <table class="table">
+<table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -25,19 +25,18 @@
       <th scope="col">Remove</th>
     </tr>
   </thead>
-  <tbody>
-    
-  </tbody>
 </table>
-            from:<select>
+        <form id="form" method="POST">
+            from:<select id="fromUserList">
             </select>
-            <input type="text" placeholder="Amount">
 
-            to:<select>
+            <input type="text" placeholder="Amount" name="transfer" id="transfer" required>
+
+            to:<select id="toUserList">
             </select>
             <br>
-            <button type="button" class="btn btn-primary">Transfer</button>
-
+            <button type="button" class="btn btn-primary" name="submit" id="submit">Transfer</button>
+        </form>
     
     <script src="./scripts/script.js" ></script>
     

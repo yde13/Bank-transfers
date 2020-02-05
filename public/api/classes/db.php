@@ -41,6 +41,10 @@ class Database
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
     }
+    public function returnConnection()
+    {
+        return $this->pdo;
+    }
     // public function query($sql)
     // {
     //     $this->stmt = $this->pdo->prepare($sql);
@@ -49,5 +53,4 @@ class Database
     // {
     //     return $this->stmt->execute();
     // }
-
 }
