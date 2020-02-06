@@ -36,38 +36,30 @@ switch ($requestMethod) {
         $transaction->setFromAccount($fromAccount);
         $transaction->setToAmount($toAmount);
         $transaction->setToAccount($toAccount);
-        //$transactionInfo = $transaction->createTransaction($transaction->getBalance($fromAccount), $toAmount));
-
-        // $transactionInfo = $transaction->createTransaction();
 
         try {
             if ($transactionInfo = $transaction->createTransaction($transaction->getBalance($fromAccount), $toAmount)) {
                 echo ("Transaction was created");
+                // throw new \Exception("Went well!");
             }
         } catch (Exception $e) {
-                echo 'Message: ' . $e->getMessage();
+               $response = [
+                "message"=>  $e->getMessage()
+                ];
+                echo json_encode($response);
+                exit;
+            // throw new \Exception("Medges ej");
         }
 
          
-        // try {
-        //     if ($transactionInfo = $transaction->createTransaction($transaction->getBalance($fromAccount), $toAmount)) {
-        //         echo ("Transaction was Succesfull");
-        //         return $transactionInfo;
-        //     }
-        // } catch (Exception $e) {
-        //     echo 'Message:' . $e->getMessage();
-        // }
-        // $transactionInfo = $transaction->createTransaction($balance, $amount);
 
         if (!empty($transactionInfo)) {
             $js_encode = json_encode(array('status'=>true, 'message'=>'Transaction created successfully'));
         } else {
             $js_encode = json_encode(array('status'=>false, 'message'=>'Transaction creation failed.'));
         }
-        // header('Content-Type: application/json');
         echo $js_encode;
         break;
     default:
-        // header("HTTP/1.0 405 Method Not Allowed");
         break;
 }

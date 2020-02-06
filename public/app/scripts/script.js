@@ -20,8 +20,13 @@ $(document).ready(function () {
             dataType: 'json',
             
             success: function (d) {
-                alert('Success');
-                //transfer mooney to selected accounts using views in database
+                if ($('#transfer').val() == 0) {
+                    alert('Need to set amount to transfer');
+
+                } else {
+                    alert('Success');
+
+                }
 
             },
 

@@ -80,7 +80,7 @@ class Transaction
     public function checkBalance($balance, $amount)
     {
         if ($balance < $amount || $balance < 0) {
-            throw new Exception("Not enough money!");
+            throw new \Exception("Medges ej!");
         }
         return true;
     }
