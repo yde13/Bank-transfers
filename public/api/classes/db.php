@@ -6,7 +6,7 @@ use PDO;
 
 class Database
 {
-    // private $dotenv = classes\Dotenv::createImmutable(__DIR__);
+    // private $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     // private $dotenv->load();
     // private $host    = $_ENV['DB_HOST'];
     // private $port    = $_ENV['DB_PORT'];
@@ -30,14 +30,10 @@ class Database
     public function connect()
     {
 
-//        $this->pdo = null;
 
-        // $dsn = "mysql:host=$this->host;port=$this->port;dbname=$this->db;charset=$this->charset";
         try {
             $this->pdo = new PDO("mysql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db . ";charset=" . $this->charset, $this->user, $this->pass, $this->options);
-//            echo ("connected");
         } catch (\PDOException $e) {
-//            echo ("not connected");
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
     }
@@ -45,12 +41,4 @@ class Database
     {
         return $this->pdo;
     }
-    // public function query($sql)
-    // {
-    //     $this->stmt = $this->pdo->prepare($sql);
-    // }
-    // public function execute()
-    // {
-    //     return $this->stmt->execute();
-    // }
 }

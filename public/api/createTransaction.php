@@ -1,6 +1,6 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json");
+ header("Access-Control-Allow-Origin:");
+ header("Content-Type: application/json");
 
 
 $requestMethod = $_SERVER["REQUEST_METHOD"]; //märker av vad för request som görs
@@ -36,14 +36,21 @@ switch ($requestMethod) {
         $toAmount = $body_data['to_amount'];
         $toAccount = $body_data['to_account'];
         
-
-       
  
         $transaction->setFromAmount($fromAmount);
         $transaction->setFromAccount($fromAccount);
         $transaction->setToAmount($toAmount);
         $transaction->setToAccount($toAccount);
-        $transactionInfo = $transaction->createTransaction();
+        //$transactionInfo = $transaction->createTransaction($transaction->getBalance($fromAccount), $toAmount));
+
+         
+        if ($transaction->createTransaction($transaction->getBalance($fromAccount, $toAmount)) {
+            throw new Exception("not enough!")
+        }
+         
+                 
+         
+
         if (!empty($transactionInfo)) {
             $js_encode = json_encode(array('status'=>true, 'message'=>'Transaction created successfully'));
         } else {

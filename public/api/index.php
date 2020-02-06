@@ -1,18 +1,23 @@
 <?php
 
+//headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json");
 
+//include classes
 include_once './classes/db.php';
 include_once './classes/user.php';
 
+//make an object of the classes
 $database = new classes\Database;
 $database->connect();
 
 $user = new Classes\User($database->pdo);
 
+//call to the function get in class user
 $result = $user->get();
 
+//räknar rows i databasen
 $num = $result->rowCount();
 
 if ($num > 0) {

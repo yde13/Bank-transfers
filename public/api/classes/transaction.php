@@ -39,8 +39,10 @@ class Transaction
    
  
     // create Student
-    public function createTransaction()
+    public function createTransaction($balance, $amount)
     {
+        $this->checkBalance($balance, $amount);
+
         try {
             $sql = "INSERT INTO `philip-bank`.`transactions`
             (from_amount, from_account, to_amount, to_account)
@@ -62,8 +64,22 @@ class Transaction
         }
     }
 
-    public function checkBalance()
+    public function getBalance()
     {
-        //do something
+        $query = "SELECT balance FROM `philip-bank`.vw_users WHERE account_id = " . $from_account;
+
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute();
+        $data = $stmt->rowCount();
+
+        return $data["balance"];
+    }
+
+    public function checkBalance($balance, $amount)
+    {
+        if ($balance < $amount || $balance < 0) {
+            throw new Exception("Not enough money!");
+        }
+        return true;
     }
 }
