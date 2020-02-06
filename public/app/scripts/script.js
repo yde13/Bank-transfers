@@ -25,9 +25,9 @@ $(document).ready(function () {
 
             },
 
-            error: function(err) {
-                console.error("something went wrong!");
-            }
+            // error: function(err) {
+            //     console.error(err);
+            // }
         });
     });
 

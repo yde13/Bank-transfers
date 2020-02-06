@@ -74,7 +74,6 @@ class Transaction
         // }
         $data = $stmt->fetchAll();
 
-        // var_dump($data[0]["balance"]);
         return $data[0]["balance"];
     }
 

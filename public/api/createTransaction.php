@@ -42,7 +42,7 @@ switch ($requestMethod) {
 
         try {
             if ($transactionInfo = $transaction->createTransaction($transaction->getBalance($fromAccount), $toAmount)) {
-                echo ("Transction created");
+                echo ("Transaction was created");
             }
         } catch (Exception $e) {
                 echo 'Message: ' . $e->getMessage();

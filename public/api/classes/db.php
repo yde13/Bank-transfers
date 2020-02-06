@@ -19,11 +19,7 @@ class Database
     private $user;
     private $pass;
 
-    // private $host    = 'xav-p-mariadb01.xavizus.com';
-    // private $port    = 16200;
-    // private $db      = 'philip-bank';
-    // private $user    = 'philip';
-    // private $pass    = 'cbQUJ7cwRzTK1239';
+    
     private $charset = 'utf8mb4';
     private $options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
