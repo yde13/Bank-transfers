@@ -10,6 +10,7 @@ class Transaction
     private $toAmount;
     private $toAccount;
 
+    //dependency injection
     public function __construct($db)
     {
         $this->pdo = $db->pdo;
@@ -38,41 +39,43 @@ class Transaction
  
    
  
-    // create Student
+    // create transaction
     public function createTransaction($balance, $amount)
     {
         $this->checkBalance($balance, $amount);
 
         try {
-            $sql = "INSERT INTO `philip-bank`.`transactions`
+            $sql = "INSERT INTO transactions
             (from_amount, from_account, to_amount, to_account)
             VALUES
-            ($this->fromAmount, $this->fromAccount, $this->toAmount, $this->toAccount)";
+            (:fromAmount, :fromAccount, :toAmount, :toAccount)";
 
-            /*$data = [
-                ':from_amount' => $this->fromAmount,
-                ':from_account' => $this->fromAccount,
-                ':to_amount' => $this->toAmount,
-                ':to_account' => $this->toAccount,
-            ];*/
             $stmt = $this->pdo->prepare($sql);
-            $stmt->execute($data);
-            $status = $stmt->rowCount();
-            return $status;
+            $stmt->bindParam(':fromAmount', $this->fromAmount);
+            $stmt->bindParam(':fromAccount', $this->fromAccount);
+            $stmt->bindParam(':toAmount', $this->toAmount);
+            $stmt->bindParam(':toAccount', $this->toAccount);
+
+            $stmt->execute();
+            return $stmt;
         } catch (Exception $e) {
             die("Oh crap! We got an error in the query!");
         }
     }
 
-    public function getBalance()
+    public function getBalance($fromAccount)
     {
-        $query = "SELECT balance FROM `philip-bank`.vw_users WHERE account_id = " . $from_account;
+        $query = "SELECT balance FROM vw_users WHERE account_id = :account";
 
         $stmt = $this->pdo->prepare($query);
-        $stmt->execute();
-        $data = $stmt->rowCount();
+        $stmt->bindParam(':account', $this->fromAccount);
+        /*if*/ $stmt->execute();
+            // return true;
+        // }
+        $data = $stmt->fetchAll();
 
-        return $data["balance"];
+        // var_dump($data[0]["balance"]);
+        return $data[0]["balance"];
     }
 
     public function checkBalance($balance, $amount)

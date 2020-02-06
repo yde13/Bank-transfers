@@ -28,7 +28,7 @@ class User
     public function get()
     {
         $query = "SELECT id, firstName, lastName, username, mobilephone, account_id, balance
-                  FROM `philip-bank`.`vw_users`";
+                  FROM vw_users";
 
         $stmt = $this->pdo->prepare($query);
 
@@ -40,7 +40,7 @@ class User
     public function getAll()
     {
         $sql = "SELECT from_amount, from_account,  from_currency, to_account, `date` FROM
-             `philip-bank`.transactions ORDER BY date DESC LIMIT 10";
+             transactions ORDER BY date DESC LIMIT 10";
 
         $stmt = $this->pdo->prepare($sql);
 
